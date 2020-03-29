@@ -29,11 +29,17 @@ class DishDetail extends Component
                     </CardBody>       
                     </Card>
                 info = this.props.selected1.comments.map((dish) => {
-                        return <div className="text-left font-weight-bold">    
+                    
+                        return <div className=" text-left font-weight-bold">    
                         {dish.comment}
                         <br/>
                         <br/>  
-                        -- {dish.author} , {dish.date} 
+                      
+                        -- {dish.author} ,
+                    
+                          {new Intl.DateTimeFormat('en-US',{year:'numeric',month:'short',day:'2-digit'}).format(new Date(Date.parse(dish.date)))}
+                          
+                         
                         <br/> 
                         <br/> 
                         </div> });
@@ -42,12 +48,8 @@ class DishDetail extends Component
 
     else
     {
-            
-              
                     selected=<div></div>
                     info=<div> </div>
-              
-  
     }
          
 
