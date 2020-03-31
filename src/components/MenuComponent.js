@@ -14,23 +14,22 @@ function RenderMenuItem({dishesh,onClick})
                         </CardImgOverlay>
                     </Card>
     )
-
 }
    
-
-   const Menu=(props)=>
+const Menu=(props)=>
     {
         const menu=props.dishes.map((dishesh)=>{
             return (
-                <div key={dishesh.id} className="col-xl-5 col-sm-12 mb-2" >
+                <div key={dishesh.id} className="col-xl-5 mb-2" >
                   <RenderMenuItem dishesh={dishesh} onClick={props.onClick} />  
                 </div>
             )
         });
         return (
             
-                <div className="row">       
-                        {menu}                  
+                <div className="container-md">
+                    <div className="row">
+                    {menu} </div>                             
                 </div>    
               
           

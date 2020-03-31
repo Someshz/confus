@@ -8,7 +8,7 @@ function RenderDish({dish1})
     
    if(dish1.selected1!=null)
        {   
-            return(  <Card >
+            return( <Card >
                    <CardImg width="100%" src={dish1.selected1.image} alt={dish1.selected1.name}/>
                    <CardBody>
                    <CardTitle >{dish1.selected1.name}</CardTitle>
@@ -63,6 +63,7 @@ const DishDetail=(props)=>
     });
 }
     return (
+        <div className="container">
             <div className="row">
                 
             <div className="col-md-5 col-sm-12 col-sm-12 font-weight-bold text-left">
@@ -71,6 +72,7 @@ const DishDetail=(props)=>
             <div className="col-md-5 col-sm-12">
             <h1 className="text-left ">Comments</h1>
                {info}
+            </div>
             </div>
             </div>
     )

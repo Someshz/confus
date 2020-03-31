@@ -6,6 +6,8 @@ import Menu from './MenuComponent.js'
 import DishDetail from './DishDetailComponent';
 import { DISHES } from '../shared/dishes'
 import Footer from './FooterComponent';
+import Home from './HomeComponent'
+import {Route,Switch,Redirect} from 'react-router-dom';
 
 
 class Main extends Component
@@ -27,19 +29,21 @@ class Main extends Component
     }
   render()
   {
+    const HomePage= ()=>{
+      return (
+      <Home />
+      );
+    }
   return (
-    <div className="App">
+    <div >
         <Header />
-        <div class="container">
-        <Menu dishes={this.state.dishes} onClick={(dishId)=>this.onFunction(dishId)} />
-        <DishDetail selected1={this.state.selected} />
-       
+        <Switch>
+        <Route path="/home" component={HomePage} />
+        <Route path="/menu" component={()=><Menu  dishes={this.state.dishes}/> }/>
+        <Redirect to="/home" />
+        </Switch>
+        <Footer/>
      </div>
-     <div>
-     <Footer/>
-     </div>
-        
-    </div>
   );
  }
 }
