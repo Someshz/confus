@@ -18,8 +18,7 @@ class Header extends Component
     {
         console.log("somesh");
        this.setState(
-           {
-               
+           {  
               isOpen: !this.state.isOpen
            });
     }
