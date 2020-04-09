@@ -33,7 +33,7 @@ class Contact extends Component
     handleBlur=(field)=>(evt)=>
     {
         this.setState({
-            touched:{...this.state.touched,[field]:true}
+            touched:{[field]:true}
         });
 
     }
@@ -187,7 +187,7 @@ class Contact extends Component
                         </FormGroup>
                         <FormGroup row>
                             <Col md={{size:10,offset:2}}>
-                                <Button tpe="submit" color="primary">Submit Feedback </Button>
+                                <Button type="submit" color="primary">Submit Feedback </Button>
                             </Col>
                         </FormGroup>
                     </Form>

@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.4.1",
     "bootstrap-social": "^5.1.1",
+    "build": "^0.1.4",
     "deployment": "^0.2.3",
     "font-awesome": "^4.7.0",
     "react": "^16.13.1",
