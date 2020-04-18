@@ -94,8 +94,8 @@ return(
                 <LocalForm onSubmit={(values)=> this.handleSubmit(values)}>
                         <Row className="form-group">
                             <Col md={12}>
-                            <Label htmlfor="rating">Rating </Label>
-                            <Input type="number" className="form-control" modal=".rating" id="rating" name="rating" />
+                            <Label htmlfor="rating">Rating</Label>
+                            <Input type="number"  className="form-control" modal=".rating" id="rating" name="rating" />
                             </Col>
                         </Row>
                         <Row className="form-group">
@@ -128,10 +128,9 @@ return(
                         <Row className="form-group">
                             <Col md={12}>
                             <Label htmlfor="comment">Comment</Label>
-                            <Input type="textarea" className="form-control" row={15} modal=".comment" id="comment" name="comment"/>
+                            <Input type="textarea"  className="form-control" row={15} modal=".comment" id="comment" name="comment"/>
                             </Col>
                         </Row>
-                        <br/>
                         <Row className="form-group">
                         <Col md={12}>
                         <Button type="submit" color="primary" value="submit">Submit</Button>
