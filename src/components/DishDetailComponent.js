@@ -3,7 +3,7 @@ import {Card, CardBody,CardImg,CardTitle,Label,Input,Row,Col,CardText,Breadcrumb
 import {Link} from 'react-router-dom';
 import {LocalForm,Errors, Control} from "react-redux-form";
 
-
+let info1=<div></div>
 const Required=(val)=> val && val.length;
 const minLength=(len)=>(val)=>val && (val.length>=len);
 const maxLength=(len)=>(val)=> !(val) || (val.length<=len);
@@ -33,8 +33,8 @@ modalToggle()
 
 handleSubmit(values)
     {
-        console.log("current state is"+JSON.stringify(values));
-        alert("current state is"+JSON.stringify(values)); 
+      
+       this.props.addComment(this.props.selected1.id, values.rating, values.yourname, values.comment);
     }
     
 RenderDish(dish1)
@@ -57,28 +57,30 @@ RenderDish(dish1)
          )
      }  
  }
+ 
        
-RenderInfo(dish)
+RenderInfo(dish1)
   {
-    if(dish!=null)
-    {
-     return(   
-    <div className=" text-left font-weight-bold">    
-    {dish.comment}
-    <br/>
-    <br/>  
-    -- {dish.author} ,
-     {new Intl.DateTimeFormat('en-US',{year:'numeric',month:'short',day:'2-digit'}).format(new Date(Date.parse(dish.date)))} 
-
-     <br/>
-     <br/>
-     </div> 
-     )  
+    if(dish1!=null)
+    {  
+        info1 =dish1.map((dish)=>{
+          return(
+            <div className=" text-left font-weight-bold">    
+                {dish.comment}
+                <br/>
+                <br/>  
+                -- {dish.author} ,
+                {new Intl.DateTimeFormat('en-US',{year:'numeric',month:'short',day:'2-digit'}).format(new Date(Date.parse(dish.date)))} 
+                <br/>
+                <br/> 
+            </div> )
+        });
+     
     }
     else{
-        return(
-            <div></div>
-        )
+        
+         info1=   <div></div>
+       
     }     
  
 }
@@ -95,7 +97,7 @@ return(
                         <Row className="form-group">
                             <Col md={12}>
                             <Label htmlfor="rating">Rating</Label>
-                            <Input type="number"  className="form-control" modal=".rating" id="rating" name="rating" />
+                            <Control.text   className="form-control" model=".rating" id="rating" name="rating" />
                             </Col>
                         </Row>
                         <Row className="form-group">
@@ -128,7 +130,7 @@ return(
                         <Row className="form-group">
                             <Col md={12}>
                             <Label htmlfor="comment">Comment</Label>
-                            <Input type="textarea"  className="form-control" row={15} modal=".comment" id="comment" name="comment"/>
+                            <Control.textarea   className="form-control" row={15} model=".comment" id="comment" name="comment"/>
                             </Col>
                         </Row>
                         <Row className="form-group">
@@ -145,11 +147,14 @@ return(
  render()
  {
 
-    let info="";
+    
+    
+    
     if(this.props.comments1!=null)
     {
-    info=this.RenderInfo( this.props.comments1)
+   this.RenderInfo( this.props.comments1)
     }
+    
 
     return (
         <div className="container">
@@ -171,7 +176,7 @@ return(
             </div>
             <div className="col-md-5 col-sm-12">
             <h1 className="text-left ">Comments</h1>
-              {info}
+              {info1}
             </div>
             </div>
             {this.medial()}
