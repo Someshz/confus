@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {Card, CardBody,CardImg,CardTitle,Label,Input,Row,Col,CardText,BreadcrumbItem,Breadcrumb,Button,Modal,ModalBody,ModalHeader} from 'reactstrap';
+import {Card, CardBody,CardImg,CardTitle,Label,Row,Col,CardText,BreadcrumbItem,Breadcrumb,Button,Modal,ModalBody,ModalHeader} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import {LocalForm,Errors, Control} from "react-redux-form";
+import {Loading} from "./LoadingComponent"
 
 let info1=<div></div>
 const Required=(val)=> val && val.length;
@@ -155,7 +156,25 @@ return(
    this.RenderInfo( this.props.comments1)
     }
     
-
+    if (this.props.isLoading) {
+        return(
+            <div className="container">
+                <div className="row">            
+                    {Loading()}
+                </div>
+            </div>
+        );
+    }
+    else if (this.props.errmess) {
+        return(
+            <div className="container">
+                <div className="row">            
+                    <h4>{this.props.errmess}</h4>
+                </div>
+            </div>
+        );
+    }
+    else 
     return (
         <div className="container">
             <div className='row'>

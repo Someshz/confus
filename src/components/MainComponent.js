@@ -12,8 +12,7 @@ import {Route,Switch,Redirect} from 'react-router-dom';
 import { connect } from "react-redux";
 import {withRouter}from "react-router-dom";
 import About from './AboutComponent'
-import {addComment} from "../redux/ActionCreator"
-
+import {addComment,fetchDishes} from "../redux/ActionCreator"
 
 
 const mapStateToProps=(state)=>
@@ -28,27 +27,36 @@ const mapStateToProps=(state)=>
 
 const mapDispatchToProps = dispatch => ({
   
-  addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment))
-
+  addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment)),
+  fetchDishes:()=>{dispatch(fetchDishes())}
 });
-
 
 class Main extends Component
  {
-   
+
+  componentWillMount() {
+    this.props.fetchDishes();
+  }
+
   render()
   {
     const HomePage= ()=>{
       return (
-      <Home dish={this.props.dishes.filter((dish)=>dish.featured)[0]} promo={this.props.promotions.filter((promo)=>promo.featured)[0]} lead={this.props.leaders.filter((lead)=>lead.featured)[0]}  />
+      <Home dish={this.props.dishes.dishes.filter((dish)=>dish.featured)[0]} 
+       promo={this.props.promotions.filter((promo)=>promo.featured)[0]} 
+       lead={this.props.leaders.filter((lead)=>lead.featured)[0]}
+       dishesFailed={this.props.dishes.errmess}
+       dishesLoading={this.props.dishes.isLoading}
+      />
       );
     }
 const DishWithId=({match})=>
 {
-  
   return(
-   <DishDetail selected1={this.props.dishes.filter((dish)=>dish.id===parseInt(match.params.dishid,10))[0]} 
+   <DishDetail selected1={this.props.dishes.dishes.filter((dish)=>dish.id===parseInt(match.params.dishid,10))[0]} 
    comments1 ={this.props.comments.filter((com)=>com.dishId===parseInt(match.params.dishid,10))}
+   isLoading={this.props.dishes.isLoading}
+   errmess={this.props.dishes.errmess}
    addComment={this.props.addComment}/>
   )
 }
