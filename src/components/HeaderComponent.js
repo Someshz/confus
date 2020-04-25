@@ -75,12 +75,10 @@ class Header extends Component
           </div>
         </Navbar>
         <Jumbotron>
-            
                     <div  className="col-md-12 text-left">
                        <h1>Ristorante Con Fusion</h1>
                        <p>this is one of the best restaurent in the Indiathis is one of the best restaurent in the Indiathis is one of the best restaurent in the India</p>
-                    </div>
-                
+                    </div>    
        </Jumbotron>
        <Modal isOpen={this.state.isModalOpen} toggle={this.modalToggle} >
            <ModalHeader  toggle={this.modalToggle}>Login</ModalHeader>
@@ -95,7 +93,7 @@ class Header extends Component
                    <FormGroup>
                        <Label htmlfor="password">Password</Label>
                        <Input type="password" 
-                        innerRef={(input)=>this.password=input}
+                        innerRef={(input1)=>this.password=input1}
                         name="password" id="passoword"/>
                    </FormGroup>
                    <FormGroup check>
