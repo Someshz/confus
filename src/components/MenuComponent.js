@@ -2,11 +2,9 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Loading} from "./LoadingComponent"
 import {baseUrl} from '../shared/baseUrl';
-
-
 import {Card ,CardImg,CardImgOverlay,CardTitle,Breadcrumb,BreadcrumbItem} from 'reactstrap';
 
-function RenderMenuItem({dishesh,onClick})
+function RenderMenuItem({dishesh})
 {
     return(
 
@@ -23,14 +21,8 @@ function RenderMenuItem({dishesh,onClick})
    
 const Menu=(props)=>
     {
-        const menu=props.dishes.dishes.map((dishesh)=>{
-            return (
-                <div key={dishesh.id} className="col-xl-5 mb-2" >
-                  <RenderMenuItem dishesh={dishesh}  />  
-                </div>
-            )
-        });
-
+          
+    
         if (props.dishes.isLoading) {
             return(
                 <div className="container">
@@ -40,20 +32,27 @@ const Menu=(props)=>
                 </div>
             );
         }
-        else if (props.dishes.errMess) {
+        else if (props.dishes.errmess) {
             return(
                 <div className="container">
                     <div className="row"> 
                         <div className="col-12">
-                            <h4>{props.dishes.errMess}</h4>
+                            <h4>{props.dishes.errmess}</h4>
                         </div>
                     </div>
                 </div>
             );
         }
         else
+        {
+            const menu=props.dishes.dishes.map((dishesh)=>{
+                return (
+                    <div key={dishesh.id} className="col-xl-5 mb-2" >
+                      <RenderMenuItem dishesh={dishesh}  />  
+                    </div>
+                )
+            });
         return (
-            
                 <div className="container-md">
                     <div className='row'>
                         <Breadcrumb>
@@ -66,12 +65,12 @@ const Menu=(props)=>
                         </div>
                     </div>
                     <div className="row">
-                    {menu} </div>                             
-                </div>    
-              
-          
-        );
+                    {menu} 
+                    </div>                             
+                </div>   
+              );
     }
+}
 
 
 
