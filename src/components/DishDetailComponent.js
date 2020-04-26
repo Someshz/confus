@@ -36,8 +36,7 @@ modalToggle()
 
 handleSubmit(values)
     {
-      
-       this.props.addComment(this.props.selected1.id, values.rating, values.yourname, values.comment);
+       this.props.postComment(this.props.selected1.id, values.rating, values.yourname, values.comment);
     }
     
 RenderDish(dish1)
@@ -150,9 +149,6 @@ return(
  render()
  {
 
-    
-    
-    
     if(this.props.comments1!=null)
     {
    this.RenderInfo( this.props.comments1)
